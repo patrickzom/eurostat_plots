@@ -1,9 +1,7 @@
-source("R./measures.R")
+source("R./2_measures.R")
 library(ggplot2)
 library(scales)
 # plots -------------------------------------------------------------------
-
-
 #median
 plot_medPL<- ggplot(medPL, aes(x = time, y = values, color = Land)) +
   geom_line(aes(color = Land), size = 1) +
@@ -27,7 +25,7 @@ plot_meanPL<- ggplot(meanPL, aes(x = time, y = values, color = Land)) +
   geom_point(aes(shape = Land), size = 4) +
   labs(x = "Jahr",
        y = "Post-tax disposable income",
-       title = "Durschnittliches Einkommen")  +
+       title = "Verfügbares durchschnittliches Einkommen")  +
   scale_x_continuous(breaks = meanPL$time) +
   theme_bw() +
   scale_color_manual(values = c("darkblue", "lightblue")) + 
@@ -35,6 +33,8 @@ plot_meanPL<- ggplot(meanPL, aes(x = time, y = values, color = Land)) +
 
 
 plot_meanPL
+
+
 
 
 #gini

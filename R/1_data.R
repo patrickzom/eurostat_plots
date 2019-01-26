@@ -10,7 +10,3 @@ data <- lapply(codes, get_eurostat, stringsAsFactors = FALSE)
 names(data) <- names
 
 list2env(data, .GlobalEnv)
-
-
-
-

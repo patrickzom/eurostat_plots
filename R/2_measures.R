@@ -1,4 +1,4 @@
-source("R/data.R")
+source("R/1_data.R")
 
 #specify countries in vector
 co <- c("PL", "EU28")
@@ -64,6 +64,3 @@ quants <- quants  %>% filter(geo %in% co)
 
 ###ilc_di11
 qsr <- qsr %>% filter(geo %in% co)
-
-
-
