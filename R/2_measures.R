@@ -1,4 +1,16 @@
-source("R/1_data.R")
+library(dplyr)
+
+load("./data/eurostat_data.rda")
+
+names <- c("pov_th", "pov", "quants", "qsr", "gini", 
+           "inc", "hlth", "pov_reg")
+
+
+names(eurostat_data) <- names
+
+
+
+list2env(eurostat_data, .GlobalEnv)
 
 #specify countries in vector
 co <- c("PL", "EU28")
@@ -16,11 +28,19 @@ giniPL$Land <- as.factor(giniPL$Land)
 levels(giniPL$Land) <- c("EU-28", "PL")
 
 
+####real income
+
+
+
+
 ####income ilc_di03
 inc <- inc %>% filter(geo %in% co)
 
 inc$time<-format(inc$time, format="%Y")
 inc$time <- as.numeric(inc$time)
+
+
+
 
 
 medPL <- inc %>% filter(age == "TOTAL" &
@@ -46,9 +66,13 @@ meanPL$Land <- as.factor(meanPL$Land)
 levels(meanPL$Land) <- c("EU-28", "PL")
 
 
-# no data hlth  ilc_lk11 <- hlth %>% filter(geo %in% co)
 
 
+
+# additional variables ----------------------------------------------------
+
+#hlth  
+ilc_lk11 <- hlth %>% filter(geo %in% co)
 
 ##ilc_li41
 pov_reg <- pov_reg %>% filter(geo %in% co)

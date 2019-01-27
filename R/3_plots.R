@@ -21,8 +21,8 @@ plot_medPL
 
 
 plot_meanPL<- ggplot(meanPL, aes(x = time, y = values, color = Land)) +
-  geom_line(aes(color = Land), size = 1.5) +
-  geom_point(aes(shape = Land), size = 4) +
+  geom_line(aes(color = Land), size = 1) +
+  geom_point(aes(shape = Land), size = 3) +
   labs(x = "Jahr",
        y = "Post-tax disposable income",
        title = "Verfügbares durchschnittliches Einkommen")  +
