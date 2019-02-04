@@ -5,10 +5,7 @@ load("./data/eurostat_data.rda")
 names <- c("pov_th", "pov", "quants", "qsr", "gini", 
            "inc", "hlth", "pov_reg")
 
-
 names(eurostat_data) <- names
-
-
 
 list2env(eurostat_data, .GlobalEnv)
 
@@ -20,12 +17,12 @@ co <- c("PL", "EU28")
 gini$time<- format(gini$time, format="%Y")
 gini$time <- as.numeric(gini$time)
 
-giniPL <- gini %>% filter(geo %in% co &
+gini <- gini %>% filter(geo %in% co &
                           time > 2004)
 
-colnames(giniPL)[colnames(giniPL)=="geo"] <- "Land"
-giniPL$Land <- as.factor(giniPL$Land)
-levels(giniPL$Land) <- c("EU-28", "PL")
+colnames(gini)[colnames(gini)=="geo"] <- "Land"
+gini$Land <- as.factor(gini$Land)
+levels(gini$Land) <- c("EU-28", "PL")
 
 
 ####real income
@@ -40,31 +37,26 @@ inc$time<-format(inc$time, format="%Y")
 inc$time <- as.numeric(inc$time)
 
 
-
-
-
-medPL <- inc %>% filter(age == "TOTAL" &
+med <- inc %>% filter(age == "TOTAL" &
                          unit == "EUR" &
                          indic_il == "MED_E" &
                          sex== "T" &
                          geo %in% co)
 
-colnames(medPL)[colnames(medPL)=="geo"] <- "Land"
-medPL$Land <- as.factor(medPL$Land)
-levels(medPL$Land) <- c("EU-28", "PL")
+colnames(med)[colnames(med)=="geo"] <- "Land"
+med$Land <- as.factor(med$Land)
+levels(med$Land) <- c("EU-28", "PL")
 
 
-
-meanPL <- inc %>% filter(age == "TOTAL" &
+mean <- inc %>% filter(age == "TOTAL" &
                           unit == "EUR" &
                           indic_il =="MEI_E" &
                           sex == "T" &
                           geo %in% co )
 
-colnames(meanPL)[colnames(meanPL)=="geo"] <- "Land"
-meanPL$Land <- as.factor(meanPL$Land)
-levels(meanPL$Land) <- c("EU-28", "PL")
-
+colnames(mean)[colnames(mean)=="geo"] <- "Land"
+mean$Land <- as.factor(mean$Land)
+levels(mean$Land) <- c("EU-28", "PL")
 
 
 
